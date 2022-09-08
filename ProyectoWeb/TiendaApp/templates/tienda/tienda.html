@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tienda{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+    <div style="float: right; margin-right: 60px;">
+        {% include 'carro/widget.html' %}
+
+    <!--Incluimos la ruta del widget-->
+    </div>
+    <br>
+    {% for producto in productos %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width:20%; margin: 5px 5px;">
+                    <img class="card-img-top" src="{{producto.imagen.url}}">
+
+                    <div class="card-body" style="text-align: center;">
+                        <h6 class="card-title">{{producto.nombre}}</h6>
+                        <p class="card-text">{{producto.precio}}</p>
+                    </div>
+
+                    <div class="card-footer" style="text-align: center;">
+                        <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar al carro</a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+    {% endblock %}
+</body>
+
+</html>

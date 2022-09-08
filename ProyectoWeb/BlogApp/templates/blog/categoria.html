@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Blog{% endblock %}</title>
+</head>
+
+<body>
+  {% block content %}
+
+  {% for post in posts %} <!--bucle para recorrer los post-->
+
+  <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ post.imagen.url }}" alt="" style="width: 60%;">
+        <div class="intro-text left-0 text-center bg-faded p-4 rounded">
+          <h6 class="section-heading mb-4">
+            <span class="section-heading-lower">{{ post.titulo }}</span>
+            <br>
+          </h6>
+
+          <div style="text-align:left;font-size: 0.8em;">
+            <!--estilo css para el Autor:-->
+
+            <p>Autor: {{ post.autor }} </p>
+
+            {% for categoria in post.categorias.all %} <!--bucle para recorrer las categorias-->
+
+            <p>Categoria: {{ categoria.nombre }} </p>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+
+  {% endblock %}
+</body>
+
+</html>

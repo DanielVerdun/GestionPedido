@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Contacto{% endblock %}</title>
+</head>
+
+<body>
+    {% block content %}
+
+
+
+    <div>
+        {% if "valido" in request.GET %}
+
+            <p style="color: white; text-align: center;"> Informacion enviada correctamente,gracias!</p>
+
+        {% endif %}
+        
+        <form action="" method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <table style="color: white; margin: 20px auto;">{{ formulario.as_table }}</table>
+
+            <!--Botones-->
+            <input type="submit" value="Enviar Formulario" id="submit">
+            <input type="reset" value="Borrar" id="submit">
+
+        </form>
+
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

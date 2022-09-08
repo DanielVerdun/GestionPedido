@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget</title>
+</head>
+
+<body>
+
+    <table class="table table-bordered" style="color: white">
+        <thead>
+            <tr>
+                <th colspan="3" class="text-center">Carro de compras</th>
+            </tr>
+            <tr>
+
+                <th>Procucto</th>
+                <th>Cantidad</th>
+                <th>Suma</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- pregunto su hay productos en el carro.
+                    en caso que no alla muestra una advertencia.-->
+            {% if request.session.carro.items %}
+            {% for key,value in request.session.carro.items %}
+            <!--craer funcionalidad de agregar al carro-->
+            <tr class="text-center">
+                <td>{{value.nombre}}</td>
+                <td>{{value.Cantidad}}</td>
+                <td>
+                    <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-danger"> + </a>
+                    <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-danger"> - </a>
+                    <br>
+                    
+                </td>
+            </tr>
+            <!--botones de agregar y restar productos-->
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">
+                    <div class="alert alert-danger" role="alert">
+                        Aún no tienes productos
+                    </div>
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <!-- muestro la variable del importe total -->
+                    Importe total:{{importe_total_carro }}
+                </td>
+            </tr>
+
+
+        </tfoot>
+
+    </table>
+    </table>
+    </div>
+</body>
+
+</html>
