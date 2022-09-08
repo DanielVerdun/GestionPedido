@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'BlogApp',
     'ContactoApp',
     'TiendaApp',
-    'CarroApp',
+
 
 ]
 
@@ -71,7 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #'CarroApp.context_processor.importe_total_carro' --------Esta linea me daba error.
+                #context_processor
+                #'TiendaApp.context_processor.importe_total_carro',
             ],
         },
     },

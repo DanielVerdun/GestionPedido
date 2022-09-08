@@ -32,8 +32,8 @@
                 <td>{{value.nombre}}</td>
                 <td>{{value.Cantidad}}</td>
                 <td>
-                    <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-danger"> + </a>
-                    <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-danger"> - </a>
+                    <a href="{% url 'agregar' value.producto_id %}" class="btn btn-danger"> + </a>
+                    <a href="{% url 'restar' value.producto_id %}" class="btn btn-danger"> - </a>
                     <br>
                     
                 </td>
